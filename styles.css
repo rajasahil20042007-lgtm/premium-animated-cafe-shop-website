@@ -906,11 +906,291 @@ input, select, textarea {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  letter-spacing: 1.5px;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-scroll-prompt a:hover {
+  color: var(--gold-light);
+}
+
+.hero-scroll-prompt .prompt-text {
+  font-weight: 500;
+  transition: letter-spacing 0.3s ease;
+}
+
+.hero-scroll-prompt a:hover .prompt-text {
+  letter-spacing: 2.5px;
+}
+
+.scroll-chevron-indicator {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: rgba(22, 18, 15, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  animation: chevronBounce 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.scroll-chevron-indicator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  transition: opacity 0.35s ease;
+}
+
+.hero-scroll-prompt a:hover .scroll-chevron-indicator {
+  border-color: var(--gold-accent);
+  background: rgba(44, 34, 28, 0.9);
+  box-shadow: 0 0 25px var(--gold-glow-strong), 0 6px 20px rgba(0, 0, 0, 0.6);
+  transform: translateY(4px) scale(1.06);
+}
+
+.hero-scroll-prompt a:hover .scroll-chevron-indicator::before {
+  opacity: 1;
+}
+
+.chevron-svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--gold-accent);
+  stroke-width: 2.5;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.chevron-svg.chevron-2 {
+  margin-top: -8px;
+  opacity: 0.45;
+  animation: chevronPulseFade 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.hero-scroll-prompt a:hover .chevron-svg {
+  stroke: var(--gold-light);
+}
+
+@keyframes chevronBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(9px);
+  }
+}
+
+@keyframes chevronPulseFade {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(-2px);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateY(1px);
+  }
+}
+
+/* Coffee Scroll Badge Indicator (Artisanal Theme) */
+.coffee-scroll-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 155, 88, 0.45);
+  background: radial-gradient(circle at 50% 40%, rgba(38, 28, 22, 0.92) 0%, rgba(18, 14, 11, 0.88) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.12), 0 0 16px var(--gold-glow);
+  animation: coffeeBadgeFloat 2.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.coffee-badge-glow {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  opacity: 0.65;
+  animation: coffeeGlowPulse 2.6s ease-in-out infinite;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.hero-scroll-prompt a:hover .coffee-scroll-badge {
+  border-color: var(--gold-light);
+  background: radial-gradient(circle at 50% 40%, rgba(56, 40, 30, 0.96) 0%, rgba(26, 20, 16, 0.92) 100%);
+  box-shadow: 0 0 32px var(--gold-glow-strong), 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 1px 3px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.hero-scroll-prompt a:hover .coffee-badge-glow {
+  opacity: 1;
+}
+
+/* SVG Coffee Cup & Steam */
+.coffee-cup-svg {
+  width: 28px;
+  height: 28px;
+  color: var(--gold-accent);
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-scroll-prompt a:hover .coffee-cup-svg {
+  color: var(--gold-light);
+}
+
+.coffee-cup-svg .cup-body {
+  stroke: currentColor;
+  fill: rgba(212, 155, 88, 0.16);
+  transition: fill 0.3s ease;
+}
+
+.hero-scroll-prompt a:hover .cup-body {
+  fill: rgba(229, 179, 118, 0.3);
+}
+
+.coffee-cup-svg .cup-handle,
+.coffee-cup-svg .cup-saucer {
+  stroke: currentColor;
+}
+
+.coffee-cup-svg .cup-bean {
+  stroke: var(--gold-light);
+  fill: rgba(212, 155, 88, 0.35);
+  animation: beanPulse 2.6s ease-in-out infinite;
+}
+
+.coffee-cup-svg .bean-crease {
+  stroke: var(--gold-light);
+}
+
+/* Steam Wisps Animation */
+.steam-wisp {
+  stroke: var(--gold-light);
+  opacity: 0.65;
+  transform-origin: bottom center;
+}
+
+.steam-wisp.steam-1 {
+  animation: steamRise 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.steam-wisp.steam-2 {
+  animation: steamRise 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.5s;
+}
+
+.steam-wisp.steam-3 {
+  animation: steamRise 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite 1s;
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(2px) scale(0.85);
+  }
+  35% {
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px) scale(1.15);
+  }
+}
+
+@keyframes coffeeBadgeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes coffeeGlowPulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+@keyframes beanPulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    fill: rgba(229, 179, 118, 0.5);
+  }
+}
+
+/* Downward Directional Hint */
+.scroll-down-arrow {
+  color: var(--gold-accent);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: arrowPulseDown 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.hero-scroll-prompt a:hover .scroll-down-arrow {
+  opacity: 1;
+  color: var(--gold-light);
+}
+
+@keyframes arrowPulseDown {
+  0%, 100% {
+    transform: translateY(-1px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee-scroll-badge,
+  .coffee-badge-glow,
+  .steam-wisp,
+  .cup-bean,
+  .scroll-down-arrow,
+  .scroll-chevron-indicator,
+  .chevron-svg.chevron-2 {
+    animation: none;
+  }
 }
 
 .mouse-icon {
